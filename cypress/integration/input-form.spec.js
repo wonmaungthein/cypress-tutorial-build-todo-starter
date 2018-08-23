@@ -12,4 +12,12 @@ describe("Input form", () => {
       .type(typedText)
       .should("have.value", typedText);
   });
+
+  context("form submition", () => {
+    it.only("Adds a new to do submit", () => {
+      cy.get(".new-todo")
+        .type("Buy eggs")
+        .type("{enter}");
+    });
+  });
 });
