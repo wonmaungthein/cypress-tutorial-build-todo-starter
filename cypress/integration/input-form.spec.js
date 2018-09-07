@@ -14,9 +14,9 @@ describe("Input form", () => {
   });
 
   context("form submition", () => {
-    beforeEach(()=>{
-      cy.server()
-    })
+    beforeEach(() => {
+      cy.server();
+    });
     it("Adds a new to do submit", () => {
       const itemText = "Buy eggs";
       cy.route("POST", "/api/todos", {
@@ -36,17 +36,16 @@ describe("Input form", () => {
 
     it.only("shows an error message on a failed submission", () => {
       cy.route({
-        url:'/api/todos',
-        method:'POST',
+        url: "/api/todos",
+        method: "POST",
         status: 500,
-        response:{}
-      })
-      cy.get('.new-todo')
-      .type('test{enter}')
-      .should('not.exist')
+        response: {}
+      });
+      cy.get(".new-todo")
+        .type("test{enter}")
+        .should("not.exist");
 
-      cy.get('.error')
-      .should('be.visible')
+      cy.get(".error").should("be.visible");
     });
   });
 });
